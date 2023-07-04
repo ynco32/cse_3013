@@ -1,0 +1,19 @@
+
+if [ $# -eq 0 ]
+then
+
+	echo "Usage: phone searchfor [...searchfor]"
+	echo "(You didn't tell me what you want to search for.)"
+
+else
+
+	data=$@
+	for x in $*
+		do
+			data=${data}"|"${x}
+		done
+
+cat mydata | egrep -i "$data" | awk -f display.awk
+
+fi
+
